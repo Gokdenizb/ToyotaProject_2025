@@ -1,5 +1,8 @@
 package org.example;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.Executors;
@@ -9,12 +12,16 @@ import java.util.concurrent.TimeUnit;
 
 public class ClientHandler implements Runnable{
     private final Socket clientSocket;
+    private final int updateFrequency;
     private String subscribedRate = null;
     private PrintWriter output;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private final Logger logger = LogManager.getLogger(ClientHandler.class);
 
-    public ClientHandler(Socket clientSocket){
+
+    public ClientHandler(Socket clientSocket , int updateFrequency){
         this.clientSocket = clientSocket;
+        this.updateFrequency = updateFrequency;
     }
 
     @Override
@@ -22,13 +29,10 @@ public class ClientHandler implements Runnable{
         try(
                 BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintWriter output = new PrintWriter(clientSocket.getOutputStream() , true)
-
         )
         {
-
             this.output = output;
             output.println(" Bağlandınız! Abonelik için: subscribe|USDTRY");
-
 
             String clientMessage;
             while((clientMessage = input.readLine()) != null){
@@ -38,8 +42,8 @@ public class ClientHandler implements Runnable{
                     startSendingRates();
                 }
             }
-        } catch (IOException e){
-            System.out.println("istemci ile bağlantı kesildi");
+        } catch (Exception e){
+            logger.error("An error occurred: {}" , e.getMessage());
         }
     }
 
@@ -50,6 +54,6 @@ public class ClientHandler implements Runnable{
                 output.println("Updated rate " + rateData);
             }
 
-        }, 0 , 5 , TimeUnit.SECONDS);
+        }, 0 , updateFrequency , TimeUnit.MILLISECONDS);
     }
 }
