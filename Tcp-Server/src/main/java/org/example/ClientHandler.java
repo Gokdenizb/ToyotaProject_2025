@@ -32,7 +32,7 @@ public class ClientHandler implements Runnable{
         )
         {
             this.output = output;
-            output.println(" Bağlandınız! Abonelik için: subscribe|USDTRY");
+            output.println(" Bağlandınız! Abonelik için: subscribe|PF1_USDTRY");
 
             String clientMessage;
             while((clientMessage = input.readLine()) != null){
