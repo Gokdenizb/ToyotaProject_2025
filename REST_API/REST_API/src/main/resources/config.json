@@ -1,0 +1,7 @@
+{
+  "initial_bid": 37.9988,
+  "initial_ask": 38.0000,
+  "update_factor": 0.25,
+  "stream_amount": 50,
+  "stream_frequency": 5000
+}
