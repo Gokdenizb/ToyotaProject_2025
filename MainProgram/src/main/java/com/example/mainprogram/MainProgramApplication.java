@@ -20,7 +20,9 @@ public class MainProgramApplication {
 
         coordinator.addDataFetcher(new TcpDataFetcher("localhost" , 8081));
 
-        coordinator.loadDataFetchersDynamically();
+        coordinator.addDataFetcher(new RestDataFetcher("http://localhost:8080" , 5000));
+
+        //coordinator.loadDataFetchersDynamically();
 
         coordinator.startFetching();
 
