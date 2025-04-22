@@ -50,7 +50,7 @@ public class ClientHandler implements Runnable{
     public void startSendingRates(){
         scheduler.scheduleAtFixedRate(() -> {
             if(subscribedRate != null){
-                String rateData = CurrencyDataGenerator.generateRate(subscribedRate);
+                String rateData = CurrencyDataGenerator.generateRateUSDTRY(subscribedRate);
                 output.println("Updated rate " + rateData);
             }
 

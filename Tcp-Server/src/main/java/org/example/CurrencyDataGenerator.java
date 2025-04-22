@@ -20,7 +20,7 @@ public class CurrencyDataGenerator {
         update_factor = configLoader.getVariationUpdateFactor();
     }
 
-    public static String generateRate(String currencyPair) {
+    public static String generateRateUSDTRY(String currencyPair) {
         double bid = initial_bid + (random.nextDouble() * update_factor);
         double ask = initial_ask + (random.nextDouble() * update_factor);
 
