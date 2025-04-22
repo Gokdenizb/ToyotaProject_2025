@@ -5,34 +5,49 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class ConfigLoader {
 
-    @JsonProperty("initial_bid")
-    private double initial_bid;
-
-    @JsonProperty("initial_ask")
-    private double initial_ask;
-
-    @JsonProperty("update_factor")
-    private double update_factor;
-
     @JsonProperty("stream_amount")
-    private int stream_amount;
+    private int streamAmount;
 
     @JsonProperty("stream_frequency")
-    private int stream_frequency;
+    private int streamFrequency;
 
-    public static ConfigLoader loadFromConfigFile(String path) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(new File(path), ConfigLoader.class);
+    @JsonProperty("currency_pairs")
+    private List<CurrencyConfig> currencyConfigs;
+
+    public static class CurrencyConfig{
+        @JsonProperty("name")
+        private String name;
+        @JsonProperty("initial_bid")
+        private double initialBid;
+        @JsonProperty("initial_ask")
+        private double initialAsk;
+        @JsonProperty("update_factor")
+        private double updateFactor;
+
+        public String getName() { return name; }
+        public double getInitialBid() { return initialBid; }
+        public double getInitialAsk() { return initialAsk; }
+        public double getUpdateFactor() { return updateFactor; }
     }
 
-    public double getInitialBid() { return initial_bid; }
-    public double getInitialAsk() { return initial_ask; }
-    public double getVariationUpdateFactor() { return update_factor; }
-    public int getStream_amount() { return stream_amount; }
-    public int getStream_frequency() { return stream_frequency; }
+    public static ConfigLoader loadFromConfigFile(String path) throws IOException {
+        return new ObjectMapper().readValue(new File(path),ConfigLoader.class);
+    }
+
+    public int getStreamAmount() { return streamAmount; }
+    public int getStreamFrequency() { return streamFrequency; }
+    public List<CurrencyConfig> getCurrencyConfigs() { return currencyConfigs; }
+
+    public CurrencyConfig getConfigFor(String pairName){
+        return currencyConfigs.stream()
+                .filter(c -> c.getName().equalsIgnoreCase(pairName))
+                .findFirst()
+                .orElse(null);
+    }
 
 
 

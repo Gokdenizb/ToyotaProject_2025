@@ -1,7 +1,24 @@
 {
-  "initial_bid": 37.9188,
-  "initial_ask": 37.9744,
-  "update_factor": 0.3,
   "stream_amount": 50,
-  "stream_frequency": 5000
+  "stream_frequency": 5000,
+  "currency_pairs": [
+    {
+      "name": "PF1_USDTRY",
+      "initial_bid": 37.9188,
+      "initial_ask": 37.9744,
+      "update_factor": 0.3
+    },
+    {
+      "name": "PF1_EURUSD",
+      "initial_bid": 1.0845,
+      "initial_ask": 1.0850,
+      "update_factor": 11
+    },
+    {
+      "name": "PF1_GBPUSD",
+      "initial_bid": 1.2678,
+      "initial_ask": 1.2683,
+      "update_factor": 0.0005
+    }
+  ]
 }

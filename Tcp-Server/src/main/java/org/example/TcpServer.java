@@ -27,7 +27,7 @@ public class TcpServer {
             System.out.println("✅ TCP Server başlatıldı, port: " + port);
             while(true){
                 Socket clientSocket = serverSocket.accept();
-                threadPool.execute(new ClientHandler(clientSocket , configLoader.getStream_frequency()));
+                threadPool.execute(new ClientHandler(clientSocket , configLoader.getStreamFrequency()));
             }
         } catch (Exception e) {
             logger.error("An error occurred: {}" , e.getMessage());
