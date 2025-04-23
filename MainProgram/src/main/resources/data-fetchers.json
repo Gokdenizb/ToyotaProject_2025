@@ -1,0 +1,22 @@
+[
+  {
+    "name": "PF1",
+    "class": "com.example.mainprogram.TcpDataFetcher",
+    "config": {
+      "host":"localhost",
+      "port":8081,
+      "user":"admin",
+      "password":"12345" },
+    "rates": ["PF1_USDTRY","PF1_EURUSD","PF1_GBPUSD"]
+  },
+  {
+    "name": "PF2",
+    "class": "com.example.mainprogram.RestDataFetcher",
+    "config": {
+      "url":"http://localhost:8080",
+      "interval":5000,
+      "user":"admin",
+      "password":"12345" },
+    "rates": ["PF2_USDTRY","PF2_EURUSD","PF2_GBPUSD"]
+  }
+]

@@ -8,6 +8,9 @@ public interface IAbstractDataFetcher {
     void subscribe(String platformName , String rateName);
     void unSubscribe(String platformName , String rateName);
 
+    void setCallBack(IAbstractFetcherCallBack fetcherCallBack);
+    void setPlatformName(String platformName);
+
 }
 
 

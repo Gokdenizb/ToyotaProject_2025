@@ -1,6 +1,5 @@
 package com.example.rest_api.service;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -17,46 +16,90 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Yapılandırma dosyasındaki para birimi çiftleri için
+ * rastgele değişimler uygulayarak döviz kuru simülasyonu yapar.
+ * <p>
+ * Uygulama başlatıldığında JSON konfigürasyonunu okur ve
+ * belirlenen frekansta fiyat güncellemeleri üretir.
+ * </p>
+ */
 @Service
 public class ExchangeRateSimulationService {
 
-
+    /**
+     * Simülasyonun üst seviye ayarlarını temsil eden POJO.
+     */
     public static class SimulationConfigPOJO {
+        /**
+         * Başlangıç fiyatlarına dönmeden önce üretilecek güncelleme sayısı.
+         */
         @JsonProperty("stream_amount")
         public int streamAmount;
 
+        /**
+         * Güncellemelerin üretileceği zaman aralığı (milisaniye cinsinden).
+         */
         @JsonProperty("stream_frequency")
         public int streamFrequency;
 
+        /**
+         * Simülasyonu yapılacak para birimi çiftlerinin listesi.
+         */
         @JsonProperty("currency_pairs")
         public List<PairConfig> currencyPairs;
     }
 
-    public static class PairConfig{
+    /**
+     * Tek bir para birimi çifti için ayarları tutar.
+     */
+    public static class PairConfig {
+        /**
+         * Para birimi çiftinin benzersiz adı (örn. "EURUSD").
+         */
         @JsonProperty("name")
         public String name;
 
+        /**
+         * Simülasyonda kullanılacak başlangıç bid fiyatı.
+         */
         @JsonProperty("initial_bid")
         public BigDecimal initialBid;
 
+        /**
+         * Simülasyonda kullanılacak başlangıç ask fiyatı.
+         */
         @JsonProperty("initial_ask")
         public BigDecimal initialAsk;
 
+        /**
+         * Fiyat güncellemelerinde maksimum rastgele oynama faktörü.
+         */
         @JsonProperty("update_factor")
         public BigDecimal updateFactor;
     }
 
-    private static class Simulator{
+    /**
+     * İç sınıf: Tek bir para birimi çifti için simülasyon durumunu
+     * ve güncellemeleri yönetir.
+     */
+    private static class Simulator {
         private final String name;
-        private final BigDecimal initialBid , initialAsk , updateFactor;
+        private final BigDecimal initialBid, initialAsk, updateFactor;
         private final int streamAmount;
         private int streamCount;
-        private BigDecimal currentBid , currentAsk;
+        private BigDecimal currentBid, currentAsk;
         private LocalDateTime lastUpdate;
         private final Random random = new Random();
         private ExchangeRateDTO lastEmitted;
 
-        Simulator(PairConfig cfg , int streamAmount){
+        /**
+         * Simulator nesnesini yapılandırmadan oluşturur.
+         *
+         * @param cfg          Para birimi çiftine ait konfigürasyon
+         * @param streamAmount Sıfırlamadan önceki adım sayısı
+         */
+        Simulator(PairConfig cfg, int streamAmount) {
             this.name = cfg.name;
             this.initialBid = cfg.initialBid;
             this.initialAsk = cfg.initialAsk;
@@ -65,6 +108,9 @@ public class ExchangeRateSimulationService {
             reset();
         }
 
+        /**
+         * Simülatörü başlangıç değerlerine sıfırlar.
+         */
         private void reset() {
             this.currentBid = initialBid;
             this.currentAsk = initialAsk;
@@ -73,6 +119,11 @@ public class ExchangeRateSimulationService {
             this.lastEmitted = buildDTO();
         }
 
+        /**
+         * Mevcut duruma göre DTO oluşturur.
+         *
+         * @return Son üretilen ExchangeRateDTO
+         */
         private ExchangeRateDTO buildDTO() {
             ExchangeRateDTO dto = new ExchangeRateDTO();
             dto.setRateName(name);
@@ -82,21 +133,27 @@ public class ExchangeRateSimulationService {
             return dto;
         }
 
-        void tick(){
-            if(streamCount >= streamAmount){
+        /**
+         * Bir simülasyon adımı gerçekleştirir: fiyatları rastgele günceller,
+         * yüzde fark sınırını ve bid-ask sırasını korur, gerekli ise sıfırlar.
+         */
+        void tick() {
+            if (streamCount >= streamAmount) {
                 reset();
             } else {
                 double diffBid = random.nextDouble() * updateFactor.doubleValue();
                 double diffAsk = random.nextDouble() * updateFactor.doubleValue();
                 BigDecimal candBid = currentBid.add(BigDecimal.valueOf(random.nextBoolean() ? diffBid : -diffBid));
-                BigDecimal candAsk = currentBid.add(BigDecimal.valueOf(random.nextBoolean() ? diffAsk : -diffAsk));
+                BigDecimal candAsk = currentAsk.add(BigDecimal.valueOf(random.nextBoolean() ? diffAsk : -diffAsk));
 
-                if (candAsk.compareTo(candBid) <= 0){
+                // Ask fiyatı mutlaka bid fiyatından 0.01 fazla olmalı
+                if (candAsk.compareTo(candBid) <= 0) {
                     candAsk = candBid.add(BigDecimal.valueOf(0.01));
                 }
                 LocalDateTime now = LocalDateTime.now();
 
-                if (pctDiff(currentBid , candBid) > 1 || pctDiff(currentAsk , candAsk) > 1){
+                // %1'den fazla fiyat sıçraması varsa değişikliği yoksay
+                if (pctDiff(currentBid, candBid) > 1 || pctDiff(currentAsk, candAsk) > 1) {
                     candBid = currentBid;
                     candAsk = currentAsk;
                     now = lastUpdate;
@@ -109,108 +166,127 @@ public class ExchangeRateSimulationService {
             }
         }
 
-        ExchangeRateDTO getLastEmitted(){
+        /**
+         * Son üretilen rate DTO'sunu döner.
+         *
+         * @return En son ExchangeRateDTO
+         */
+        ExchangeRateDTO getLastEmitted() {
             return lastEmitted;
         }
 
         /**
-         * Calculates the absolute percentage difference between two {@link BigDecimal} values.
-         * <p>
-         * This does:
-         * <ol>
-         *   <li>Take the absolute difference: {@code |oldVal − newVal|}.</li>
-         *   <li>Divide by {@code oldVal} with 8 decimal places, rounded half‑up.</li>
-         *   <li>Multiply the result by 100 to convert to a percentage.</li>
-         * </ol>
-         * </p>
+         * İki değerin yüzde farkını hesaplar: |old - new| / old * 100.
+         * 8 ondalık hane ile yuvarlanır.
          *
-         * @param oldVal the original value (the denominator); if zero, this method returns 0
-         * @param newVal the new value to compare against
-         * @return the absolute percent change between oldVal and newVal (e.g. 2.0 for a 2% change)
-         * @throws NullPointerException if {@code oldVal} or {@code newVal} is null
+         * @param oldVal Eski referans değeri
+         * @param newVal Yeni değer
+         * @return Yüzde değişim (örn. 2.0 => %%2 değişim)
          */
-        private double pctDiff(BigDecimal oldVal , BigDecimal newVal){
-            if (oldVal.compareTo(newVal) == 0){
+        private double pctDiff(BigDecimal oldVal, BigDecimal newVal) {
+            if (oldVal.compareTo(newVal) == 0) {
                 return 0;
             }
-
             return oldVal.subtract(newVal).abs()
-                    .divide(oldVal , 8 , BigDecimal.ROUND_HALF_UP)
+                    .divide(oldVal, 8, BigDecimal.ROUND_HALF_UP)
                     .multiply(BigDecimal.valueOf(100))
                     .doubleValue();
         }
     }
 
-    private final Map<String , Simulator> sim = new ConcurrentHashMap<>();
+    /**
+     * Para birimi çiftlerine göre simülatörleri tutan harita.
+     */
+    private final Map<String, Simulator> sim = new ConcurrentHashMap<>();
 
+    /**
+     * Uygulama başladığında konfigürasyonu okuyup simülasyonu başlatır.
+     *
+     * @throws Exception Konfigürasyon okunamazsa fırlatılır
+     */
     @PostConstruct
-    public void init() throws Exception{
+    public void init() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper()
                 .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
 
-        try(InputStream is = new ClassPathResource("config.json").getInputStream()){
-            SimulationConfigPOJO simulationConfigPOJO =
-                    objectMapper.readValue(is , SimulationConfigPOJO.class);
-
-            for(PairConfig pc : simulationConfigPOJO.currencyPairs){
-                sim.put(pc.name , new Simulator(pc , simulationConfigPOJO.streamAmount));
+        try (InputStream is = new ClassPathResource("config.json").getInputStream()) {
+            SimulationConfigPOJO cfg = objectMapper.readValue(is, SimulationConfigPOJO.class);
+            for (PairConfig pc : cfg.currencyPairs) {
+                sim.put(pc.name, new Simulator(pc, cfg.streamAmount));
             }
 
             ScheduledExecutorService sched = Executors.newSingleThreadScheduledExecutor();
             sched.scheduleAtFixedRate(
                     () -> sim.values().forEach(Simulator::tick), 0,
-                    simulationConfigPOJO.streamFrequency,
+                    cfg.streamFrequency,
                     TimeUnit.MILLISECONDS
             );
         }
     }
 
-    public ExchangeRateDTO getCurrentRate(String currencyPair){
-        Simulator Sim = sim.get(currencyPair);
-        if(Sim == null){
-            throw new NoSuchElementException("Unknown pair: " + currencyPair);
+    /**
+     * Belirtilen para birimi çifti için en son simüle edilen rate'i döner.
+     *
+     * @param currencyPair Para birimi çiftinin adı (örn. "EURUSD")
+     * @return En son oluşturulan ExchangeRateDTO
+     * @throws NoSuchElementException Bilinmeyen çift adı verilirse fırlatılır
+     */
+    public ExchangeRateDTO getCurrentRate(String currencyPair) {
+        Simulator sim = this.sim.get(currencyPair);
+        if (sim == null) {
+            throw new NoSuchElementException("Bilinmeyen çift: " + currencyPair);
         }
-        return Sim.getLastEmitted();
+        return sim.getLastEmitted();
     }
 
-
-    public static class ExchangeRateDTO{
+    /**
+     * API üzerinden döndürülecek rate bilgilerini tutan DTO sınıfı.
+     */
+    public static class ExchangeRateDTO {
 
         private String rateName;
         private BigDecimal bid;
         private BigDecimal ask;
         private LocalDateTime timeStamp;
 
-        public String getRateName(){
-            return this.rateName;
-        }
+        /**
+         * @return Para birimi çiftinin adı
+         */
+        public String getRateName() { return rateName; }
 
-        public void setRateName(String rateName){
-            this.rateName = rateName;
-        }
+        /**
+         * @param rateName Para birimi çiftinin adını ayarlar
+         */
+        public void setRateName(String rateName) { this.rateName = rateName; }
 
-        public BigDecimal getBid(){
-            return bid;
-        }
+        /**
+         * @return Bid fiyatı
+         */
+        public BigDecimal getBid() { return bid; }
 
-        public void setBid(BigDecimal bid){
-            this.bid = bid;
-        }
+        /**
+         * @param bid Bid fiyatını ayarlar
+         */
+        public void setBid(BigDecimal bid) { this.bid = bid; }
 
-        public BigDecimal getAsk(){
-            return this.ask;
-        }
+        /**
+         * @return Ask fiyatı
+         */
+        public BigDecimal getAsk() { return ask; }
 
-        public void setAsk(BigDecimal ask){
-            this.ask = ask;
-        }
+        /**
+         * @param ask Ask fiyatını ayarlar
+         */
+        public void setAsk(BigDecimal ask) { this.ask = ask; }
 
-        public LocalDateTime getTimeStamp(){
-            return this.timeStamp;
-        }
+        /**
+         * @return Güncelleme zaman damgası
+         */
+        public LocalDateTime getTimeStamp() { return timeStamp; }
 
-        public void setTimeStamp(LocalDateTime timeStamp){
-            this.timeStamp = timeStamp;
-        }
+        /**
+         * @param timeStamp Zaman damgasını ayarlar
+         */
+        public void setTimeStamp(LocalDateTime timeStamp) { this.timeStamp = timeStamp; }
     }
 }

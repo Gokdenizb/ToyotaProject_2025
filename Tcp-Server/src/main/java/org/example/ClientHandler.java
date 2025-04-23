@@ -6,90 +6,130 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.net.Socket;
 import java.time.format.DateTimeFormatter;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicReference;
 
-
-public class ClientHandler implements Runnable{
+/**
+ * Her bir istemci bağlantısı için işlem akışını yöneten sınıf.
+ * <p>
+ * TCP soketi üzerinden gelen abonelik isteklerini dinler,
+ * belirlenen frekansta güncellenen döviz kurlarını gönderir.
+ * </p>
+ */
+public class ClientHandler implements Runnable {
+    /** İstemci soketi referansı */
     private final Socket clientSocket;
+
+    /** Kur güncelleme yayım periyodu (ms cinsinden) */
     private final int updateFrequency;
-    private String subscribedRate = null;
+
+    /** İstemciye veri yazmak için kullanılan PrintWriter */
     private PrintWriter output;
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    /** Loglama için Logger örneği */
     private final Logger logger = LogManager.getLogger(ClientHandler.class);
-    private String lastRateData = null;
-    private Double lastBid = null;
-    private Double lastAsk = null;
-    private final double Threshold = 0.01;
-    private final DateTimeFormatter dateTimeFormatter
-            = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+    /**
+     * Sabit değer: maksimum kabul edilebilir yüzde fark (örn. 0.01 => %%1)
+     */
+    private static final double THRESHOLD = 0.01;
 
-    public ClientHandler(Socket clientSocket , int updateFrequency){
+    /**
+     * Zaman damgası formatı: yyyy-MM-dd HH:mm:ss
+     */
+    private static final DateTimeFormatter DTF =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    /**
+     * Güncelleme görevlerini planlamak için kullanılan scheduler.
+     */
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
+
+    /**
+     * İstemci soketini ve güncelleme frekansını belirterek handler oluşturur.
+     *
+     * @param clientSocket    Bağlanan istemcinin soketi
+     * @param updateFrequency Kur güncelleme sıklığı (ms)
+     */
+    public ClientHandler(Socket clientSocket, int updateFrequency) {
         this.clientSocket = clientSocket;
         this.updateFrequency = updateFrequency;
     }
 
+    /**
+     * Handler başlatıldığında çağrılır: bağlantıyı dinler ve abonelikleri yönetir.
+     */
     @Override
-    public void run(){
-        try(
-                BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                PrintWriter output = new PrintWriter(clientSocket.getOutputStream() , true)
-        )
-        {
-            this.output = output;
-            output.println(" Bağlandınız! Abonelik için: subscribe|PF1_USDTRY , EURUSD veya GBPUSD");
+    public void run() {
+        try (
+                BufferedReader input = new BufferedReader(
+                        new InputStreamReader(clientSocket.getInputStream()));
+                PrintWriter out = new PrintWriter(
+                        clientSocket.getOutputStream(), true)
+        ) {
+            this.output = out;
+            // Bağlantı mesajı ve abonelik talimatı
+            out.println("Bağlandınız! Abonelik için: subscribe|PF1_USDTRY , PF1_EURUSD veya PF1_GBPUSD");
 
-            String clientMessage;
-            while((clientMessage = input.readLine()) != null){
-                if(clientMessage.startsWith("subscribe|")){
-                    subscribedRate = clientMessage.split("\\|")[1];
-                    output.println("✅ " + subscribedRate + " kuruna abone oldunuz.");
-                    startSendingRates();
+            String line;
+            // İstemci mesajlarını okuma döngüsü
+            while ((line = input.readLine()) != null) {
+                if (line.startsWith("subscribe|")) {
+                    String rate = line.split("\\|", 2)[1];
+                    out.println("✅ " + rate + " kuruna abone oldunuz.");
+                    scheduleRatePublisher(rate);
                 }
             }
-        } catch (Exception e){
-            logger.error("An error occurred: {}" , e.getMessage());
+        } catch (IOException e) {
+            logger.error("Bir hata oluştu: {}", e.getMessage(), e);
         }
     }
 
-    public void startSendingRates(){
+    /**
+     * Belirtilen kur için düzenli aralıklarla güncelleme mesajı planlar.
+     * <p>
+     * Son gönderilen bid/ask değerlerini tutarak, eğer yüzde fark
+     * eşik değerinden küçükse mesajı atlar.
+     * </p>
+     *
+     * @param rateName Abone olunan kur adı (örn. "PF1_USDTRY")
+     */
+    private void scheduleRatePublisher(String rateName) {
+        // Son yayınlanan ham veri, bid ve ask değerlerini saklar
+        AtomicReference<String> lastRateData = new AtomicReference<>(null);
+        AtomicReference<Double> lastBid = new AtomicReference<>(null);
+        AtomicReference<Double> lastAsk = new AtomicReference<>(null);
+
         scheduler.scheduleAtFixedRate(() -> {
+            try {
+                // Yeni kur bilgisini üret
+                String candidate = CurrencyDataGenerator.generateRate(rateName);
+                String[] parts = candidate.split("\\|");
+                double newBid = Double.parseDouble(parts[1].split(":")[2]);
+                double newAsk = Double.parseDouble(parts[2].split(":")[2]);
 
-            try{
-
-            if(subscribedRate == null) {return;}
-
-            String candidate = CurrencyDataGenerator.generateRate(subscribedRate);
-
-            double newBid = parseValue(candidate , 1);
-            double newAsk = parseValue(candidate , 2);
-
-
-            if(lastBid != null){
-                double diffBid = Math.abs(newBid - lastBid) / lastBid;
-                double diffAsk = Math.abs(newAsk - lastAsk) / lastAsk;
-
-                if(diffBid > Threshold || diffAsk > Threshold){
-                    output.println("Updated rate: " + lastRateData);
-                    return;
+                Double prevBid = lastBid.get();
+                Double prevAsk = lastAsk.get();
+                // Eğer daha önce değer varsa, yüzde farkları kontrol et
+                if (prevBid != null) {
+                    double diffBid = Math.abs(newBid - prevBid) / prevBid;
+                    double diffAsk = Math.abs(newAsk - prevAsk) / prevAsk;
+                    if (diffBid <= THRESHOLD && diffAsk <= THRESHOLD) {
+                        return; // eşiğin altındaki değişimleri atla
+                    }
                 }
+
+                // Yeni değerleri kaydet
+                lastBid.set(newBid);
+                lastAsk.set(newAsk);
+                lastRateData.set(candidate);
+
+                // İstemciye gönder
+                output.println("Updated rate: " + candidate);
+
+            } catch (Exception e) {
+                logger.error("Error in rate scheduler for {}: {}", rateName, e.getMessage(), e);
             }
-
-            lastBid = newBid;
-            lastAsk = newAsk;
-            lastRateData = candidate;
-            output.println("Updated rate: " + candidate);
-        } catch (Exception e){
-                logger.error("Error in rate scheduler for {}: {}", subscribedRate, e.getMessage(), e);
-            }
-        }, 0 , updateFrequency , TimeUnit.MILLISECONDS);
-    }
-
-    private double parseValue(String rateData , int partIndex){
-
-        String[] parts = rateData.split("\\|");
-        return Double.parseDouble(parts[partIndex].split(":")[2]);
+        }, 0, updateFrequency, TimeUnit.MILLISECONDS);
     }
 }
