@@ -12,7 +12,7 @@
       "name": "PF1_EURUSD",
       "initial_bid": 1.0845,
       "initial_ask": 1.0850,
-      "update_factor": 11
+      "update_factor": 0.0005
     },
     {
       "name": "PF1_GBPUSD",

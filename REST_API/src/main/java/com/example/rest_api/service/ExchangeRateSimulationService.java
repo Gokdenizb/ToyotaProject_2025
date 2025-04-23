@@ -8,12 +8,11 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -21,38 +20,159 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class ExchangeRateSimulationService {
 
-    @JsonProperty("initial_bid")
-    private BigDecimal bid;
-
-    @JsonProperty("initial_ask")
-    private BigDecimal ask;
-
-    @JsonProperty("update_factor")
-    private BigDecimal updateFactor;
-
-    @JsonProperty("stream_amount")
-    private int streamAmount;
-
-    @JsonProperty("stream_frequency")
-    private int streamFrequency;
-    private int streamCount;
-    private Random random;
-    private LocalDateTime lastUpdate;
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-
 
     public static class SimulationConfigPOJO {
-
-        public BigDecimal initialBid;
-        public BigDecimal initialAsk;
-        public BigDecimal updateFactor;
+        @JsonProperty("stream_amount")
         public int streamAmount;
+
+        @JsonProperty("stream_frequency")
         public int streamFrequency;
 
+        @JsonProperty("currency_pairs")
+        public List<PairConfig> currencyPairs;
     }
 
-    private SimulationConfigPOJO simulationConfigPOJO;
+    public static class PairConfig{
+        @JsonProperty("name")
+        public String name;
+
+        @JsonProperty("initial_bid")
+        public BigDecimal initialBid;
+
+        @JsonProperty("initial_ask")
+        public BigDecimal initialAsk;
+
+        @JsonProperty("update_factor")
+        public BigDecimal updateFactor;
+    }
+
+    private static class Simulator{
+        private final String name;
+        private final BigDecimal initialBid , initialAsk , updateFactor;
+        private final int streamAmount;
+        private int streamCount;
+        private BigDecimal currentBid , currentAsk;
+        private LocalDateTime lastUpdate;
+        private final Random random = new Random();
+        private ExchangeRateDTO lastEmitted;
+
+        Simulator(PairConfig cfg , int streamAmount){
+            this.name = cfg.name;
+            this.initialBid = cfg.initialBid;
+            this.initialAsk = cfg.initialAsk;
+            this.updateFactor = cfg.updateFactor;
+            this.streamAmount = streamAmount;
+            reset();
+        }
+
+        private void reset() {
+            this.currentBid = initialBid;
+            this.currentAsk = initialAsk;
+            this.streamCount = 0;
+            this.lastUpdate = LocalDateTime.now();
+            this.lastEmitted = buildDTO();
+        }
+
+        private ExchangeRateDTO buildDTO() {
+            ExchangeRateDTO dto = new ExchangeRateDTO();
+            dto.setRateName(name);
+            dto.setBid(currentBid);
+            dto.setAsk(currentAsk);
+            dto.setTimeStamp(lastUpdate);
+            return dto;
+        }
+
+        void tick(){
+            if(streamCount >= streamAmount){
+                reset();
+            } else {
+                double diffBid = random.nextDouble() * updateFactor.doubleValue();
+                double diffAsk = random.nextDouble() * updateFactor.doubleValue();
+                BigDecimal candBid = currentBid.add(BigDecimal.valueOf(random.nextBoolean() ? diffBid : -diffBid));
+                BigDecimal candAsk = currentBid.add(BigDecimal.valueOf(random.nextBoolean() ? diffAsk : -diffAsk));
+
+                if (candAsk.compareTo(candBid) <= 0){
+                    candAsk = candBid.add(BigDecimal.valueOf(0.01));
+                }
+                LocalDateTime now = LocalDateTime.now();
+
+                if (pctDiff(currentBid , candBid) > 1 || pctDiff(currentAsk , candAsk) > 1){
+                    candBid = currentBid;
+                    candAsk = currentAsk;
+                    now = lastUpdate;
+                }
+                currentBid = candBid;
+                currentAsk = candAsk;
+                lastUpdate = now;
+                streamCount++;
+                lastEmitted = buildDTO();
+            }
+        }
+
+        ExchangeRateDTO getLastEmitted(){
+            return lastEmitted;
+        }
+
+        /**
+         * Calculates the absolute percentage difference between two {@link BigDecimal} values.
+         * <p>
+         * This does:
+         * <ol>
+         *   <li>Take the absolute difference: {@code |oldVal − newVal|}.</li>
+         *   <li>Divide by {@code oldVal} with 8 decimal places, rounded half‑up.</li>
+         *   <li>Multiply the result by 100 to convert to a percentage.</li>
+         * </ol>
+         * </p>
+         *
+         * @param oldVal the original value (the denominator); if zero, this method returns 0
+         * @param newVal the new value to compare against
+         * @return the absolute percent change between oldVal and newVal (e.g. 2.0 for a 2% change)
+         * @throws NullPointerException if {@code oldVal} or {@code newVal} is null
+         */
+        private double pctDiff(BigDecimal oldVal , BigDecimal newVal){
+            if (oldVal.compareTo(newVal) == 0){
+                return 0;
+            }
+
+            return oldVal.subtract(newVal).abs()
+                    .divide(oldVal , 8 , BigDecimal.ROUND_HALF_UP)
+                    .multiply(BigDecimal.valueOf(100))
+                    .doubleValue();
+        }
+    }
+
+    private final Map<String , Simulator> sim = new ConcurrentHashMap<>();
+
+    @PostConstruct
+    public void init() throws Exception{
+        ObjectMapper objectMapper = new ObjectMapper()
+                .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
+
+        try(InputStream is = new ClassPathResource("config.json").getInputStream()){
+            SimulationConfigPOJO simulationConfigPOJO =
+                    objectMapper.readValue(is , SimulationConfigPOJO.class);
+
+            for(PairConfig pc : simulationConfigPOJO.currencyPairs){
+                sim.put(pc.name , new Simulator(pc , simulationConfigPOJO.streamAmount));
+            }
+
+            ScheduledExecutorService sched = Executors.newSingleThreadScheduledExecutor();
+            sched.scheduleAtFixedRate(
+                    () -> sim.values().forEach(Simulator::tick), 0,
+                    simulationConfigPOJO.streamFrequency,
+                    TimeUnit.MILLISECONDS
+            );
+        }
+    }
+
+    public ExchangeRateDTO getCurrentRate(String currencyPair){
+        Simulator Sim = sim.get(currencyPair);
+        if(Sim == null){
+            throw new NoSuchElementException("Unknown pair: " + currencyPair);
+        }
+        return Sim.getLastEmitted();
+    }
+
 
     public static class ExchangeRateDTO{
 
@@ -93,67 +213,4 @@ public class ExchangeRateSimulationService {
             this.timeStamp = timeStamp;
         }
     }
-
-    @PostConstruct
-    public void init(){
-        ObjectMapper objectMapper = new ObjectMapper()
-                .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
-
-        try(InputStream is = new ClassPathResource("config.json").getInputStream()){
-            simulationConfigPOJO = objectMapper.readValue(is , SimulationConfigPOJO.class);
-
-        } catch (IOException e){
-            throw new RuntimeException("Could not load config file ", e);
-        }
-
-        this.bid = simulationConfigPOJO.initialBid;
-        this.ask = simulationConfigPOJO.initialAsk;
-        this.updateFactor = simulationConfigPOJO.updateFactor;
-        this.streamAmount = simulationConfigPOJO.streamAmount;
-        this.streamFrequency = simulationConfigPOJO.streamFrequency;
-        this.streamCount = 0;
-        this.lastUpdate = LocalDateTime.now();
-        this.random = new Random();
-
-        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-
-        scheduler.scheduleAtFixedRate( this::simulateUpdate ,0 , streamFrequency , TimeUnit.MILLISECONDS);
-
-
-    }
-
-    public void simulateUpdate(){
-        if(streamCount >= streamAmount){
-            streamCount = 0;
-            bid = simulationConfigPOJO.initialBid;
-            ask = simulationConfigPOJO.initialAsk;
-        }
-        else {
-            double realBid = random.nextDouble() * updateFactor.doubleValue();
-            double realAsk = random.nextDouble() * updateFactor.doubleValue();
-
-            bid = bid.add(BigDecimal.valueOf(random.nextBoolean() ? realBid : -realBid));
-            ask = ask.add(BigDecimal.valueOf(random.nextBoolean() ? realAsk : -realAsk));
-
-            if(ask.compareTo(bid) <= 0){
-                ask = bid.add(BigDecimal.valueOf(0.01));
-            }
-
-            lastUpdate = LocalDateTime.now();
-            streamCount++;
-        }
-    }
-
-    public ExchangeRateDTO getCurrentRate(String currencyPair){
-        ExchangeRateDTO getRate = new ExchangeRateDTO();
-        getRate.setRateName(currencyPair);
-        getRate.setBid(bid);
-        getRate.setAsk(ask);
-        getRate.setTimeStamp(lastUpdate);
-        return getRate;
-    }
-
-
-
-
 }
