@@ -3,7 +3,7 @@
     "name": "PF1",
     "class": "com.example.mainprogram.TcpDataFetcher",
     "config": {
-      "host":"localhost",
+      "host": "tcp-server",
       "port":8081,
       "user":"admin",
       "password":"12345" },
@@ -13,7 +13,7 @@
     "name": "PF2",
     "class": "com.example.mainprogram.RestDataFetcher",
     "config": {
-      "url":"http://localhost:8080",
+      "url":"http://rest-api:8080",
       "interval":5000,
       "user":"admin",
       "password":"12345" },

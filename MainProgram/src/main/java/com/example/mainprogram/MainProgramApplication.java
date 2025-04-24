@@ -6,8 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-
-
 @SpringBootApplication
 public class MainProgramApplication {
 
@@ -20,7 +18,6 @@ public class MainProgramApplication {
         coord.addCalculatedListener(rate -> System.out.println());
         coord.init();
         Thread.sleep(20000);
-
 
 
         //coordinator.addDataFetcher(new TcpDataFetcher("localhost" , 8081));

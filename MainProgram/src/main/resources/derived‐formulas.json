@@ -1,0 +1,22 @@
+[
+  {
+    "symbol": "USDTRY",
+    "formulaBid": "(#pf1_USDTRY.bid + #pf2_USDTRY.bid) / 2",
+    "formulaAsk": "(#pf1_USDTRY.ask + #pf2_USDTRY.ask) / 2"
+  },
+  {
+    "symbol": "USD_MID",
+    "formulaBid": "((#pf1_USDTRY.bid + #pf2_USDTRY.bid) / 2 + (#pf1_USDTRY.ask + #pf2_USDTRY.ask) / 2) / 2",
+    "formulaAsk": "((#pf1_USDTRY.bid + #pf2_USDTRY.bid) / 2 + (#pf1_USDTRY.ask + #pf2_USDTRY.ask) / 2) / 2"
+  },
+  {
+    "symbol": "EURTRY",
+    "formulaBid": "(((#pf1_USDTRY.bid + #pf2_USDTRY.bid) / 2 + (#pf1_USDTRY.ask + #pf2_USDTRY.ask) / 2) / 2) * ((#pf1_EURUSD.bid + #pf2_EURUSD.bid) / 2)",
+    "formulaAsk": "(((#pf1_USDTRY.bid + #pf2_USDTRY.bid) / 2 + (#pf1_USDTRY.ask + #pf2_USDTRY.ask) / 2) / 2) * ((#pf1_EURUSD.ask + #pf2_EURUSD.ask) / 2)"
+  },
+  {
+    "symbol": "GBPTRY",
+    "formulaBid": "(((#pf1_USDTRY.bid + #pf2_USDTRY.bid) / 2 + (#pf1_USDTRY.ask + #pf2_USDTRY.ask) / 2) / 2) * ((#pf1_GBPUSD.bid + #pf2_GBPUSD.bid) / 2)",
+    "formulaAsk": "(((#pf1_USDTRY.bid + #pf2_USDTRY.bid) / 2 + (#pf1_USDTRY.ask + #pf2_USDTRY.ask) / 2) / 2) * ((#pf1_GBPUSD.ask + #pf2_GBPUSD.ask) / 2)"
+  }
+]

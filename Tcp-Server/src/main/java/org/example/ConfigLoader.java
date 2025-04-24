@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class ConfigLoader {
@@ -33,6 +35,17 @@ public class ConfigLoader {
         public double getInitialAsk() { return initialAsk; }
         public double getUpdateFactor() { return updateFactor; }
     }
+
+    public static ConfigLoader loadFromResource(String resource) throws IOException {
+        InputStream in = ConfigLoader.class
+                .getClassLoader()
+                .getResourceAsStream(resource);
+        if (in == null) {
+            throw new FileNotFoundException("Resource not found: " + resource);
+        }
+        return new ObjectMapper().readValue(in, ConfigLoader.class);
+    }
+
 
     public static ConfigLoader loadFromConfigFile(String path) throws IOException {
         return new ObjectMapper().readValue(new File(path),ConfigLoader.class);

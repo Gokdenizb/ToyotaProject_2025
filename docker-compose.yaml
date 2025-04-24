@@ -1,0 +1,21 @@
+services:
+  tcp-server:
+    build:
+      context: ./Tcp-Server
+    ports:
+      - "8081:8081"
+
+  rest-api:
+    build:
+      context: ./REST_API
+    ports:
+      - "8080:8080"
+
+  main-app:
+    build:
+      context: ./MainProgram
+    ports:
+      - "8082:8082"
+    depends_on:
+      - tcp-server
+      - rest-api

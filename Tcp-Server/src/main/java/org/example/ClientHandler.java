@@ -114,8 +114,8 @@ public class ClientHandler implements Runnable {
                 if (prevBid != null) {
                     double diffBid = Math.abs(newBid - prevBid) / prevBid;
                     double diffAsk = Math.abs(newAsk - prevAsk) / prevAsk;
-                    if (diffBid <= THRESHOLD && diffAsk <= THRESHOLD) {
-                        return; // eşiğin altındaki değişimleri atla
+                    if (diffBid > THRESHOLD && diffAsk > THRESHOLD) {
+                        return; // eşiğin üstündeki değişimleri atla
                     }
                 }
 

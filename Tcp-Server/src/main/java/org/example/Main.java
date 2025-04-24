@@ -11,7 +11,7 @@ public class Main {
 
 
         try{
-            ConfigLoader configLoader = ConfigLoader.loadFromConfigFile("/Users/gokdenizbayik/IdeaProjects/ToyotaProject_2025/Tcp-Server/src/main/java/org/example/config.json");
+            ConfigLoader configLoader = ConfigLoader.loadFromResource("config.json");
 
             CurrencyDataGenerator.configure(configLoader);
 
