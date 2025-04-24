@@ -1,4 +1,4 @@
-#ToyotaProject_2025
+ToyotaProject_2025
 Genel Bakış:
 ToyotaProject_2025, üç bağımsız bileşenden oluşan bir yabancı döviz kuru simülasyon ve dağıtım sistemidir:
 
@@ -23,27 +23,6 @@ Maven 3.8+
 Docker & Docker Compose (isteğe bağlı, konteyner ile çalıştırma için)
 
 Git
-
-
-Proje Yapısı:
-
-ToyotaProject_2025/
-├── Tcp-Server/
-│   ├── src/main/java/org/example/ConfigLoader.java
-│   ├── src/main/java/org/example/CurrencyDataGenerator.java
-│   ├── src/main/java/org/example/ClientHandler.java
-│   ├── src/main/java/org/example/TcpServer.java
-│   ├── src/main/java/org/example/Main.java
-│   ├── config.json
-│   └── pom.xml
-├── Rest-Api/
-│   ├── src/main/java/com/example/rest_api/…
-│   └── pom.xml
-├── MainProgram/
-│   ├── src/main/java/org/example/…
-│   └── pom.xml
-└── docker-compose.yaml
-
 
 Kullanım:
 
