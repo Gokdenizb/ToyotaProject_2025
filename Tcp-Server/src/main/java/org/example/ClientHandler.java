@@ -95,7 +95,6 @@ public class ClientHandler implements Runnable {
      * @param rateName Abone olunan kur adı (örn. "PF1_USDTRY")
      */
     private void scheduleRatePublisher(String rateName) {
-        // Son yayınlanan ham veri, bid ve ask değerlerini saklar
         AtomicReference<String> lastRateData = new AtomicReference<>(null);
         AtomicReference<Double> lastBid = new AtomicReference<>(null);
         AtomicReference<Double> lastAsk = new AtomicReference<>(null);
@@ -110,22 +109,32 @@ public class ClientHandler implements Runnable {
 
                 Double prevBid = lastBid.get();
                 Double prevAsk = lastAsk.get();
-                // Eğer daha önce değer varsa, yüzde farkları kontrol et
-                if (prevBid != null) {
+
+                String dataToSend = candidate;
+
+                if (prevBid != null && prevAsk != null) {
                     double diffBid = Math.abs(newBid - prevBid) / prevBid;
                     double diffAsk = Math.abs(newAsk - prevAsk) / prevAsk;
+
                     if (diffBid > THRESHOLD && diffAsk > THRESHOLD) {
-                        return; // eşiğin üstündeki değişimleri atla
+                        // Aşırı değişim varsa önceki veriyi tekrar gönder
+                        dataToSend = lastRateData.get();
+                        if (dataToSend == null) return; // henüz önceki veri yoksa gönderme
+                    } else {
+                        // Yeni değer kabul edildi
+                        lastBid.set(newBid);
+                        lastAsk.set(newAsk);
+                        lastRateData.set(candidate);
                     }
+                } else {
+                    // İlk değer → kaydet
+                    lastBid.set(newBid);
+                    lastAsk.set(newAsk);
+                    lastRateData.set(candidate);
                 }
 
-                // Yeni değerleri kaydet
-                lastBid.set(newBid);
-                lastAsk.set(newAsk);
-                lastRateData.set(candidate);
-
                 // İstemciye gönder
-                output.println("Updated rate: " + candidate);
+                output.println("Updated rate: " + dataToSend);
 
             } catch (Exception e) {
                 logger.error("Error in rate scheduler for {}: {}", rateName, e.getMessage(), e);

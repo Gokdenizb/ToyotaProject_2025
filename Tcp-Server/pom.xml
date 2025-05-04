@@ -35,7 +35,6 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <!-- ← replace with your actual fully-qualified class name -->
                             <mainClass>org.example.Main</mainClass>
                         </manifest>
                     </archive>

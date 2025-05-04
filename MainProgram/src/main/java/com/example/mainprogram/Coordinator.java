@@ -167,7 +167,7 @@ public class Coordinator implements IAbstractFetcherCallBack {
         }
     }
 
-    // Diğer IAbstractFetcherCallBack metotları (opsiyonel no-op)
+    // Diğer IAbstractFetcherCallBack metotları (no-op)
     @Override public void onConnect(String p, Boolean s) {}
     @Override public void onDisConnect(String p, Boolean s) {}
     @Override public void onRateAvailable(String p, String r, Rate rate) {}
