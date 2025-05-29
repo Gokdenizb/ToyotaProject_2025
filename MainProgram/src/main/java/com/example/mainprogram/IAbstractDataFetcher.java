@@ -10,7 +10,7 @@ public interface IAbstractDataFetcher {
 
     void setCallBack(IAbstractFetcherCallBack fetcherCallBack);
     void setPlatformName(String platformName);
-
+    String getPlatformName();
 }
 
 

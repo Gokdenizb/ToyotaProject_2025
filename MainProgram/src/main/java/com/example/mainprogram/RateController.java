@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class RateController {
     @GetMapping("/{rateName}")
     public Rate getRate(@PathVariable String rateName) {
-        //En point deneme verileri fakat dinamik işlenmede kullanılmıyorlar.
+        //End point deneme verileri fakat dinamik işlenmede kullanılmıyorlar.
         //Bunlar yerine data-fetchers.config içindeki veriler okunuyor.
         BigDecimal bid = BigDecimal.valueOf(38.0);
         BigDecimal ask = BigDecimal.valueOf(38.5);

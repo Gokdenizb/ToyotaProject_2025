@@ -165,11 +165,15 @@ public class TcpDataFetcher implements IAbstractDataFetcher {
                 LocalDateTime ts = LocalDateTime.parse(tsRaw, dtf);
 
                 if (callBack != null) {
+                    logger.info("Calling onRateUpdate from TCP: {} → BID={} ASK={}", rateName, bid, ask);
                     callBack.onRateUpdate(platformName, rateName, new RateFields(bid, ask, ts));
                 }
             }
         } catch (IOException e) {
             logger.error("Güncelleme dinlenirken hata: {}", e.getMessage());
         }
+    }
+    public String getPlatformName() {
+        return platformName;
     }
 }
