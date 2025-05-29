@@ -55,6 +55,7 @@ public class RestDataFetcher implements IAbstractDataFetcher {
      */
     @Override
     public void connect(String platformName, String userId, String userPassword) {
+
         logger.info("REST fetcher polling başlatıldı: {}", Url);
         scheduler = Executors.newSingleThreadScheduledExecutor();
     }
@@ -68,7 +69,6 @@ public class RestDataFetcher implements IAbstractDataFetcher {
     @Override
     public void subscribe(String platformName, String rateName) {
         this.platformName = platformName;
-
         scheduler.scheduleAtFixedRate(() -> {
             try {
                 String url = String.format("%s/api/rates/%s", Url, rateName);
@@ -86,6 +86,7 @@ public class RestDataFetcher implements IAbstractDataFetcher {
                     LocalDateTime ts = LocalDateTime.parse(node.get("timeStamp").asText());
 
                     if (callBack != null) {
+                        logger.info("Calling onRateUpdate from REST: {} → BID={} ASK={}", rn, bid, ask);
                         callBack.onRateUpdate(platformName, rn, new RateFields(bid, ask, ts));
                     }
                 }
@@ -143,5 +144,9 @@ public class RestDataFetcher implements IAbstractDataFetcher {
     @Override
     public void disConnect(String platformName, String userId, String userPassword) {
         logger.info("REST fetcher bağlantısı sonlandırıldı: {}", platformName);
+    }
+
+    public String getPlatformName(){
+        return platformName;
     }
 }

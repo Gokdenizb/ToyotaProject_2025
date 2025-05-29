@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class FetcherConfig {
+    @JsonProperty("name")
     public String name;
     @JsonProperty("class")
     public String className;
