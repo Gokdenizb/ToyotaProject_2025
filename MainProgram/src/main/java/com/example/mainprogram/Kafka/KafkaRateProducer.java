@@ -1,6 +1,6 @@
 package com.example.mainprogram.Kafka;
 
-import com.example.mainprogram.Rate;
+import com.example.mainprogram.Rate.Rate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.example.mainprogram;
+package com.example.mainprogram.Rate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
