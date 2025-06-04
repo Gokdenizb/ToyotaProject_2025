@@ -1,8 +1,5 @@
-package com.example.mainprogram.DataFetchers;
+package com.example.mainprogram;
 
-import com.example.mainprogram.IAbstractDataFetcher;
-import com.example.mainprogram.IAbstractFetcherCallBack;
-import com.example.mainprogram.Rate.RateFields;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,9 +1,6 @@
 package com.example.mainprogram;
 
 import com.example.mainprogram.Kafka.KafkaRateProducer;
-import com.example.mainprogram.Rate.Rate;
-import com.example.mainprogram.Rate.RateFields;
-import com.example.mainprogram.Rate.RateStatus;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;

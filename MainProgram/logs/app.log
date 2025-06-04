@@ -1,0 +1,870 @@
+2025-06-04T19:47:23.745Z  INFO 1 --- [MainProgram] [main] c.e.mainprogram.MainProgramApplication   : Starting MainProgramApplication v0.0.1-SNAPSHOT using Java 17.0.15 with PID 1 (/app/main-app.jar started by root in /)
+2025-06-04T19:47:23.748Z  INFO 1 --- [MainProgram] [main] c.e.mainprogram.MainProgramApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-06-04T19:47:24.866Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-04T19:47:24.870Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-04T19:47:24.983Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 1 JPA repository interface.
+2025-06-04T19:47:25.001Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-04T19:47:25.004Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04T19:47:25.021Z  INFO 1 --- [MainProgram] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.mainprogram.RateRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-06-04T19:47:25.023Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-06-04T19:47:25.168Z  INFO 1 --- [MainProgram] [main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2025-06-04T19:47:25.176Z  INFO 1 --- [MainProgram] [main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2025-06-04T19:47:25.641Z  INFO 1 --- [MainProgram] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2025-06-04T19:47:25.649Z  INFO 1 --- [MainProgram] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-04T19:47:25.650Z  INFO 1 --- [MainProgram] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-06-04T19:47:25.666Z  INFO 1 --- [MainProgram] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-04T19:47:25.668Z  INFO 1 --- [MainProgram] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1853 ms
+2025-06-04T19:47:25.788Z  INFO 1 --- [MainProgram] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-04T19:47:25.863Z  INFO 1 --- [MainProgram] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-06-04T19:47:25.888Z  INFO 1 --- [MainProgram] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-04T19:47:26.138Z  INFO 1 --- [MainProgram] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-04T19:47:26.159Z  INFO 1 --- [MainProgram] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-04T19:47:26.310Z  INFO 1 --- [MainProgram] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7b1c501d
+2025-06-04T19:47:26.312Z  INFO 1 --- [MainProgram] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-04T19:47:26.344Z  WARN 1 --- [MainProgram] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-04T19:47:26.358Z  INFO 1 --- [MainProgram] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.13
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-04T19:47:26.950Z  INFO 1 --- [MainProgram] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-04T19:47:26.998Z  INFO 1 --- [MainProgram] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04T19:47:28.212Z  WARN 1 --- [MainProgram] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-04T19:47:28.837Z  INFO 1 --- [MainProgram] [main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2025-06-04T19:47:28.838Z  INFO 1 --- [MainProgram] [main] o.s.i.channel.PublishSubscribeChannel    : Channel 'MainProgram.errorChannel' has 1 subscriber(s).
+2025-06-04T19:47:28.840Z  INFO 1 --- [MainProgram] [main] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2025-06-04T19:47:28.857Z  INFO 1 --- [MainProgram] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+2025-06-04T19:47:28.900Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [kafka:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-opensearch-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = opensearch-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-06-04T19:47:28.971Z  INFO 1 --- [MainProgram] [main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-06-04T19:47:29.080Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.0.0
+2025-06-04T19:47:29.081Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 985bc99521dd22bb
+2025-06-04T19:47:29.081Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1749066449080
+2025-06-04T19:47:29.084Z  INFO 1 --- [MainProgram] [main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Subscribed to topic(s): log-topic
+2025-06-04T19:47:29.089Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [kafka:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-postgres-group-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = postgres-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-06-04T19:47:29.091Z  INFO 1 --- [MainProgram] [main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-06-04T19:47:29.101Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.0.0
+2025-06-04T19:47:29.102Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 985bc99521dd22bb
+2025-06-04T19:47:29.103Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1749066449101
+2025-06-04T19:47:29.104Z  INFO 1 --- [MainProgram] [main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Subscribed to topic(s): rate-topic
+2025-06-04T19:47:29.134Z  INFO 1 --- [MainProgram] [main] c.e.mainprogram.MainProgramApplication   : Started MainProgramApplication in 6.164 seconds (process running for 6.915)
+2025-06-04T19:47:29.148Z  INFO 1 --- [MainProgram] [scheduling-1] com.example.mainprogram.Coordinator      : checkDataTimeouts() çalıştı
+2025-06-04T19:47:29.234Z  INFO 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : Yüklenen derived-formulas sayısı: 4
+2025-06-04T19:47:29.252Z ERROR 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : Fetcherlar oluşturulurken bir hata meydana geldi: com.example.mainprogram.TcpDataFetcher
+2025-06-04T19:47:29.253Z ERROR 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : Fetcherlar oluşturulurken bir hata meydana geldi: com.example.mainprogram.RestDataFetcher
+2025-06-04T19:47:29.438Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Cluster ID: _ggQsXrZT-6ds_rxquJIVA
+2025-06-04T19:47:29.438Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Cluster ID: _ggQsXrZT-6ds_rxquJIVA
+2025-06-04T19:47:29.445Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Discovered group coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false)
+2025-06-04T19:47:29.446Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Discovered group coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false)
+2025-06-04T19:47:29.451Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] (Re-)joining group
+2025-06-04T19:47:29.451Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] (Re-)joining group
+2025-06-04T19:47:29.483Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Request joining group due to: need to re-join with the given member-id: consumer-opensearch-group-1-69df636a-26ac-4599-ae39-378156ebb9b7
+2025-06-04T19:47:29.484Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] (Re-)joining group
+2025-06-04T19:47:29.484Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Request joining group due to: need to re-join with the given member-id: consumer-postgres-group-2-c47e8d88-f694-4e31-9584-92b09b8d8929
+2025-06-04T19:47:29.489Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] (Re-)joining group
+2025-06-04T19:47:32.518Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Successfully joined group with generation Generation{generationId=5, memberId='consumer-opensearch-group-1-69df636a-26ac-4599-ae39-378156ebb9b7', protocol='range'}
+2025-06-04T19:47:32.518Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Successfully joined group with generation Generation{generationId=5, memberId='consumer-postgres-group-2-c47e8d88-f694-4e31-9584-92b09b8d8929', protocol='range'}
+2025-06-04T19:47:32.535Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Finished assignment for group at generation 5: {consumer-opensearch-group-1-69df636a-26ac-4599-ae39-378156ebb9b7=Assignment(partitions=[log-topic-0])}
+2025-06-04T19:47:32.535Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Finished assignment for group at generation 5: {consumer-postgres-group-2-c47e8d88-f694-4e31-9584-92b09b8d8929=Assignment(partitions=[rate-topic-0])}
+2025-06-04T19:47:32.567Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Successfully synced group in generation Generation{generationId=5, memberId='consumer-postgres-group-2-c47e8d88-f694-4e31-9584-92b09b8d8929', protocol='range'}
+2025-06-04T19:47:32.567Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Successfully synced group in generation Generation{generationId=5, memberId='consumer-opensearch-group-1-69df636a-26ac-4599-ae39-378156ebb9b7', protocol='range'}
+2025-06-04T19:47:32.568Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Notifying assignor about the new Assignment(partitions=[rate-topic-0])
+2025-06-04T19:47:32.568Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Notifying assignor about the new Assignment(partitions=[log-topic-0])
+2025-06-04T19:47:32.570Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Adding newly assigned partitions: log-topic-0
+2025-06-04T19:47:32.570Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Adding newly assigned partitions: rate-topic-0
+2025-06-04T19:47:32.581Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Found no committed offset for partition log-topic-0
+2025-06-04T19:47:32.582Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition rate-topic-0 to the committed offset FetchPosition{offset=84, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2025-06-04T19:47:32.586Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : postgres-group: partitions assigned: [rate-topic-0]
+2025-06-04T19:47:32.604Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Resetting offset for partition log-topic-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+2025-06-04T19:47:32.604Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opensearch-group: partitions assigned: [log-topic-0]
+2025-06-04T19:47:39.119Z  INFO 1 --- [MainProgram] [scheduling-1] com.example.mainprogram.Coordinator      : checkDataTimeouts() çalıştı
+2025-06-04T19:47:42.128Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Revoke previously assigned partitions log-topic-0
+2025-06-04T19:47:42.128Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Revoke previously assigned partitions rate-topic-0
+2025-06-04T19:47:42.130Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opensearch-group: partitions revoked: [log-topic-0]
+2025-06-04T19:47:42.131Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : postgres-group: partitions revoked: [rate-topic-0]
+2025-06-04T19:47:42.132Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Member consumer-postgres-group-2-c47e8d88-f694-4e31-9584-92b09b8d8929 sending LeaveGroup request to coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false) due to the consumer unsubscribed from all topics
+2025-06-04T19:47:42.132Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Member consumer-opensearch-group-1-69df636a-26ac-4599-ae39-378156ebb9b7 sending LeaveGroup request to coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false) due to the consumer unsubscribed from all topics
+2025-06-04T19:47:42.133Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.134Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.134Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Unsubscribed all topics or patterns and assigned partitions
+2025-06-04T19:47:42.133Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.135Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.136Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Unsubscribed all topics or patterns and assigned partitions
+2025-06-04T19:47:42.139Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.140Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.140Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.141Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:47:42.307Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-06-04T19:47:42.307Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-06-04T19:47:42.308Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-06-04T19:47:42.308Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-06-04T19:47:42.308Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-06-04T19:47:42.308Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-06-04T19:47:42.309Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-06-04T19:47:42.309Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-06-04T19:47:42.313Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-opensearch-group-1 unregistered
+2025-06-04T19:47:42.314Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opensearch-group: Consumer stopped
+2025-06-04T19:47:42.316Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-postgres-group-2 unregistered
+2025-06-04T19:47:42.316Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : postgres-group: Consumer stopped
+2025-06-04T19:47:42.317Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-04T19:47:42.327Z  INFO 1 --- [MainProgram] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-06-04T19:47:42.336Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2025-06-04T19:47:42.336Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.i.channel.PublishSubscribeChannel    : Channel 'MainProgram.errorChannel' has 0 subscriber(s).
+2025-06-04T19:47:42.336Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2025-06-04T19:47:42.348Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04T19:47:42.351Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-04T19:47:42.355Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-06-04T19:48:47.183Z  INFO 1 --- [MainProgram] [main] c.e.mainprogram.MainProgramApplication   : Starting MainProgramApplication v0.0.1-SNAPSHOT using Java 17.0.15 with PID 1 (/app/main-app.jar started by root in /)
+2025-06-04T19:48:47.193Z  INFO 1 --- [MainProgram] [main] c.e.mainprogram.MainProgramApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-06-04T19:48:48.312Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-04T19:48:48.317Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-04T19:48:48.530Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 170 ms. Found 1 JPA repository interface.
+2025-06-04T19:48:48.549Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-04T19:48:48.551Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04T19:48:48.573Z  INFO 1 --- [MainProgram] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.mainprogram.RateRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-06-04T19:48:48.577Z  INFO 1 --- [MainProgram] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2025-06-04T19:48:48.736Z  INFO 1 --- [MainProgram] [main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2025-06-04T19:48:48.748Z  INFO 1 --- [MainProgram] [main] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2025-06-04T19:48:49.186Z  INFO 1 --- [MainProgram] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2025-06-04T19:48:49.198Z  INFO 1 --- [MainProgram] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-04T19:48:49.198Z  INFO 1 --- [MainProgram] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-06-04T19:48:49.218Z  INFO 1 --- [MainProgram] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-04T19:48:49.219Z  INFO 1 --- [MainProgram] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1929 ms
+2025-06-04T19:48:49.327Z  INFO 1 --- [MainProgram] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-04T19:48:49.395Z  INFO 1 --- [MainProgram] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-06-04T19:48:49.423Z  INFO 1 --- [MainProgram] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-04T19:48:49.636Z  INFO 1 --- [MainProgram] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-04T19:48:49.657Z  INFO 1 --- [MainProgram] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-04T19:48:49.836Z  INFO 1 --- [MainProgram] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5abbb273
+2025-06-04T19:48:49.838Z  INFO 1 --- [MainProgram] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-04T19:48:49.862Z  WARN 1 --- [MainProgram] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-04T19:48:49.879Z  INFO 1 --- [MainProgram] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.13
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-04T19:48:50.504Z  INFO 1 --- [MainProgram] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-04T19:48:50.544Z  INFO 1 --- [MainProgram] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04T19:48:51.594Z  WARN 1 --- [MainProgram] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-04T19:48:52.297Z  INFO 1 --- [MainProgram] [main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2025-06-04T19:48:52.298Z  INFO 1 --- [MainProgram] [main] o.s.i.channel.PublishSubscribeChannel    : Channel 'MainProgram.errorChannel' has 1 subscriber(s).
+2025-06-04T19:48:52.299Z  INFO 1 --- [MainProgram] [main] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2025-06-04T19:48:52.315Z  INFO 1 --- [MainProgram] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/'
+2025-06-04T19:48:52.362Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [kafka:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-opensearch-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = opensearch-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-06-04T19:48:52.401Z  INFO 1 --- [MainProgram] [main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-06-04T19:48:52.515Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.0.0
+2025-06-04T19:48:52.515Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 985bc99521dd22bb
+2025-06-04T19:48:52.515Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1749066532514
+2025-06-04T19:48:52.518Z  INFO 1 --- [MainProgram] [main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Subscribed to topic(s): log-topic
+2025-06-04T19:48:52.524Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [kafka:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-postgres-group-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = postgres-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-06-04T19:48:52.525Z  INFO 1 --- [MainProgram] [main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-06-04T19:48:52.531Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.0.0
+2025-06-04T19:48:52.535Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 985bc99521dd22bb
+2025-06-04T19:48:52.535Z  INFO 1 --- [MainProgram] [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1749066532531
+2025-06-04T19:48:52.537Z  INFO 1 --- [MainProgram] [main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Subscribed to topic(s): rate-topic
+2025-06-04T19:48:52.567Z  INFO 1 --- [MainProgram] [main] c.e.mainprogram.MainProgramApplication   : Started MainProgramApplication in 6.181 seconds (process running for 7.006)
+2025-06-04T19:48:52.575Z  INFO 1 --- [MainProgram] [scheduling-1] com.example.mainprogram.Coordinator      : checkDataTimeouts() çalıştı
+2025-06-04T19:48:52.635Z  INFO 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : Yüklenen derived-formulas sayısı: 4
+2025-06-04T19:48:52.662Z  INFO 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : Fetcher başarıyla yüklendi: PF1 (TcpDataFetcher)
+2025-06-04T19:48:52.663Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : TCP sunucusuna bağlanıldı: PF1
+2025-06-04T19:48:52.665Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [CONNECT] PF1 SUCCESS
+2025-06-04T19:48:52.667Z  INFO 1 --- [MainProgram] [main] c.example.mainprogram.RestDataFetcher    : REST fetcher polling başlatıldı: http://rest-api:8080
+2025-06-04T19:48:52.668Z  INFO 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : [CONNECT] PF2 SUCCESS
+2025-06-04T19:48:52.668Z  INFO 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : [STATUS] PF2_* → null → OK
+2025-06-04T19:48:52.668Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [STATUS] PF1_* → null → OK
+2025-06-04T19:48:52.672Z  INFO 1 --- [MainProgram] [main] c.example.mainprogram.RestDataFetcher    : PF2_USDTRY için REST aboneliği başlatıldı.
+2025-06-04T19:48:52.676Z  INFO 1 --- [MainProgram] [main] c.example.mainprogram.RestDataFetcher    : PF2_EURUSD için REST aboneliği başlatıldı.
+2025-06-04T19:48:52.676Z  INFO 1 --- [MainProgram] [main] c.example.mainprogram.RestDataFetcher    : PF2_GBPUSD için REST aboneliği başlatıldı.
+2025-06-04T19:48:52.677Z  INFO 1 --- [MainProgram] [main] com.example.mainprogram.Coordinator      : Fetcher başarıyla yüklendi: PF2 (RestDataFetcher)
+2025-06-04T19:48:52.685Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Bağlandınız! Abonelik için: subscribe|PF1_USDTRY , PF1_EURUSD veya PF1_GBPUSD
+2025-06-04T19:48:52.689Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: ✅ PF1_GBPUSD kuruna abone oldunuz.
+2025-06-04T19:48:52.691Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: ✅ PF1_USDTRY kuruna abone oldunuz.
+2025-06-04T19:48:52.694Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: ✅ PF1_EURUSD kuruna abone oldunuz.
+2025-06-04T19:48:52.703Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_GBPUSD|22:number:1.2681|25:number:1.2688|5:timestamp:2025-06-04 19:48:52
+2025-06-04T19:48:52.811Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_USDTRY","bid":38.08111897871867995,"ask":38.09111897871867995,"timeStamp":"2025-06-04T19:48:48.480726049"}
+2025-06-04T19:48:52.818Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_USDTRY → BID=38.08111897871868 ASK=38.09111897871868
+2025-06-04T19:48:52.961Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Cluster ID: _ggQsXrZT-6ds_rxquJIVA
+2025-06-04T19:48:52.961Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Cluster ID: _ggQsXrZT-6ds_rxquJIVA
+2025-06-04T19:48:52.964Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Discovered group coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false)
+2025-06-04T19:48:52.964Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Discovered group coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false)
+2025-06-04T19:48:52.967Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] (Re-)joining group
+2025-06-04T19:48:52.968Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] (Re-)joining group
+2025-06-04T19:48:52.993Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Request joining group due to: need to re-join with the given member-id: consumer-postgres-group-2-006e4bbc-7fb3-463a-9923-d765aa27a96e
+2025-06-04T19:48:52.996Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] (Re-)joining group
+2025-06-04T19:48:52.997Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Request joining group due to: need to re-join with the given member-id: consumer-opensearch-group-1-b1d4dea2-f40c-4cf5-8041-d5f0390918fe
+2025-06-04T19:48:53.000Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] (Re-)joining group
+2025-06-04T19:48:53.055Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_USDTRY] BID=38.08111897871868 ASK=38.09111897871868 platform=PF2
+2025-06-04T19:48:53.055Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][GBPUSD] BID=1.2681 ASK=1.2688 platform=PF1
+2025-06-04T19:48:53.056Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_EURUSD|22:number:1.0848|25:number:1.0852|5:timestamp:2025-06-04 19:48:52
+2025-06-04T19:48:53.059Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][EURUSD] BID=1.0848 ASK=1.0852 platform=PF1
+2025-06-04T19:48:53.060Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_USDTRY|22:number:38.1006|25:number:38.0893|5:timestamp:2025-06-04 19:48:52
+2025-06-04T19:48:53.060Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_EURUSD","bid":1.08461490810915390864,"ask":1.09461490810915390864,"timeStamp":"2025-06-04T19:48:48.479413758"}
+2025-06-04T19:48:53.061Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_EURUSD → BID=1.0846149081091538 ASK=1.0946149081091539
+2025-06-04T19:48:53.062Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][USDTRY] BID=38.1006 ASK=38.0893 platform=PF1
+2025-06-04T19:48:53.063Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_EURUSD] BID=1.0846149081091538 ASK=1.0946149081091539 platform=PF2
+2025-06-04T19:48:53.075Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] o.a.kafka.common.config.AbstractConfig   : ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [kafka:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = MainProgram-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 5
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2025-06-04T19:48:53.076Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2025-06-04T19:48:53.092Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=MainProgram-producer-1] Instantiated an idempotent producer.
+2025-06-04T19:48:53.109Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.0.0
+2025-06-04T19:48:53.110Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 985bc99521dd22bb
+2025-06-04T19:48:53.113Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1749066533109
+2025-06-04T19:48:53.122Z  INFO 1 --- [MainProgram] [kafka-producer-network-thread | MainProgram-producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=MainProgram-producer-1] Cluster ID: _ggQsXrZT-6ds_rxquJIVA
+2025-06-04T19:48:53.142Z  INFO 1 --- [MainProgram] [kafka-producer-network-thread | MainProgram-producer-1] o.a.k.c.p.internals.TransactionManager   : [Producer clientId=MainProgram-producer-1] ProducerId set to 2000 with epoch 0
+2025-06-04T19:48:53.145Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][EURTRY] bid=41.317086689531023074292675763246 ask=41.515157468875695451346124699180 @2025-06-04T19:48:53.066413593
+2025-06-04T19:48:53.149Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_GBPUSD","bid":1.267825672023462739392,"ask":1.26855666274817795476,"timeStamp":"2025-06-04T19:48:48.479785841"}
+2025-06-04T19:48:53.150Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_GBPUSD → BID=1.2678256720234626 ASK=1.268556662748178
+2025-06-04T19:48:53.153Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_GBPUSD] BID=1.2678256720234626 ASK=1.268556662748178 platform=PF2
+2025-06-04T19:48:53.162Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][GBPTRY] bid=48.297382136330732056743261225342 ask=48.32463573710759468705148614126 @2025-06-04T19:48:53.155989760
+2025-06-04T19:48:56.029Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Successfully joined group with generation Generation{generationId=7, memberId='consumer-postgres-group-2-006e4bbc-7fb3-463a-9923-d765aa27a96e', protocol='range'}
+2025-06-04T19:48:56.029Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Successfully joined group with generation Generation{generationId=7, memberId='consumer-opensearch-group-1-b1d4dea2-f40c-4cf5-8041-d5f0390918fe', protocol='range'}
+2025-06-04T19:48:56.052Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Finished assignment for group at generation 7: {consumer-opensearch-group-1-b1d4dea2-f40c-4cf5-8041-d5f0390918fe=Assignment(partitions=[log-topic-0])}
+2025-06-04T19:48:56.052Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Finished assignment for group at generation 7: {consumer-postgres-group-2-006e4bbc-7fb3-463a-9923-d765aa27a96e=Assignment(partitions=[rate-topic-0])}
+2025-06-04T19:48:56.071Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Successfully synced group in generation Generation{generationId=7, memberId='consumer-opensearch-group-1-b1d4dea2-f40c-4cf5-8041-d5f0390918fe', protocol='range'}
+2025-06-04T19:48:56.071Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Successfully synced group in generation Generation{generationId=7, memberId='consumer-postgres-group-2-006e4bbc-7fb3-463a-9923-d765aa27a96e', protocol='range'}
+2025-06-04T19:48:56.072Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Notifying assignor about the new Assignment(partitions=[log-topic-0])
+2025-06-04T19:48:56.074Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Notifying assignor about the new Assignment(partitions=[rate-topic-0])
+2025-06-04T19:48:56.076Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Adding newly assigned partitions: rate-topic-0
+2025-06-04T19:48:56.076Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Adding newly assigned partitions: log-topic-0
+2025-06-04T19:48:56.086Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Found no committed offset for partition log-topic-0
+2025-06-04T19:48:56.087Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition rate-topic-0 to the committed offset FetchPosition{offset=84, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2025-06-04T19:48:56.089Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : postgres-group: partitions assigned: [rate-topic-0]
+2025-06-04T19:48:56.095Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Resetting offset for partition log-topic-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+2025-06-04T19:48:56.095Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opensearch-group: partitions assigned: [log-topic-0]
+2025-06-04T19:48:57.692Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_GBPUSD|22:number:1.2681|25:number:1.2686|5:timestamp:2025-06-04 19:48:57
+2025-06-04T19:48:57.696Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_USDTRY","bid":38.17569146805899733,"ask":38.18569146805899733,"timeStamp":"2025-06-04T19:48:53.48102276"}
+2025-06-04T19:48:57.697Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_USDTRY → BID=38.175691468059 ASK=38.185691468059
+2025-06-04T19:48:57.698Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][GBPUSD] BID=1.2681 ASK=1.2686 platform=PF1
+2025-06-04T19:48:57.698Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_EURUSD|22:number:1.0846|25:number:1.0851|5:timestamp:2025-06-04 19:48:57
+2025-06-04T19:48:57.700Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_USDTRY] BID=38.175691468059 ASK=38.185691468059 platform=PF2
+2025-06-04T19:48:57.701Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][EURUSD] BID=1.0846 ASK=1.0851 platform=PF1
+2025-06-04T19:48:57.701Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_USDTRY|22:number:38.1490|25:number:37.9934|5:timestamp:2025-06-04 19:48:57
+2025-06-04T19:48:57.703Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][USDTRY] BID=38.1490 ASK=37.9934 platform=PF1
+2025-06-04T19:48:57.704Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USD_MID] bid=38.137820734030 ask=38.137820734030 @2025-06-04T19:48:57.702186512
+2025-06-04T19:48:57.708Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USDTRY] bid=38.162345734030 ask=38.089545734030 @2025-06-04T19:48:57.706376929
+2025-06-04T19:48:57.712Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][GBPTRY] bid=48.3422822785500474162696261390 ask=48.365748621334844217627548670 @2025-06-04T19:48:57.709892970
+2025-06-04T19:48:57.716Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][EURTRY] bid=41.3516849360092353873515819070 ask=41.5518461511128966999461553100 @2025-06-04T19:48:57.714211304
+2025-06-04T19:48:57.720Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_EURUSD","bid":1.08498059443091656427,"ask":1.09447476289414404392,"timeStamp":"2025-06-04T19:48:53.480811052"}
+2025-06-04T19:48:57.721Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_EURUSD → BID=1.0849805944309165 ASK=1.094474762894144
+2025-06-04T19:48:57.724Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_EURUSD] BID=1.0849805944309165 ASK=1.094474762894144 platform=PF2
+2025-06-04T19:48:57.730Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_GBPUSD","bid":1.267570333926760549052,"ask":1.26887990820783722412,"timeStamp":"2025-06-04T19:48:53.480959718"}
+2025-06-04T19:48:57.731Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_GBPUSD → BID=1.2675703339267606 ASK=1.2688799082078372
+2025-06-04T19:48:57.735Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_GBPUSD] BID=1.2675703339267606 ASK=1.2688799082078372 platform=PF2
+2025-06-04T19:49:02.565Z  INFO 1 --- [MainProgram] [scheduling-1] com.example.mainprogram.Coordinator      : checkDataTimeouts() çalıştı
+2025-06-04T19:49:02.697Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_USDTRY","bid":38.28696452693934824,"ask":38.29696452693934824,"timeStamp":"2025-06-04T19:48:58.481610471"}
+2025-06-04T19:49:02.704Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_USDTRY → BID=38.28696452693935 ASK=38.29696452693935
+2025-06-04T19:49:02.706Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_GBPUSD|22:number:1.2682|25:number:1.2688|5:timestamp:2025-06-04 19:49:02
+2025-06-04T19:49:02.716Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_USDTRY] BID=38.28696452693935 ASK=38.29696452693935 platform=PF2
+2025-06-04T19:49:02.716Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][GBPUSD] BID=1.2682 ASK=1.2688 platform=PF1
+2025-06-04T19:49:02.717Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_EURUSD|22:number:1.0849|25:number:1.0854|5:timestamp:2025-06-04 19:49:02
+2025-06-04T19:49:02.718Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][EURUSD] BID=1.0849 ASK=1.0854 platform=PF1
+2025-06-04T19:49:02.718Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_USDTRY|22:number:38.1633|25:number:38.0704|5:timestamp:2025-06-04 19:49:02
+2025-06-04T19:49:02.720Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][USDTRY] BID=38.1633 ASK=38.0704 platform=PF1
+2025-06-04T19:49:02.720Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USD_MID] bid=38.18158226346968 ask=38.18158226346968 @2025-06-04T19:49:02.718953167
+2025-06-04T19:49:02.724Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USDTRY] bid=38.22513226346968 ask=38.18368226346968 @2025-06-04T19:49:02.721873209
+2025-06-04T19:49:02.729Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][GBPTRY] bid=48.438801281981234293570479359304 ask=48.475278358748283168244320288048 @2025-06-04T19:49:02.727243875
+2025-06-04T19:49:02.731Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][EURTRY] bid=41.449500971369204690749063007376 ask=41.64041161248364075620199677696 @2025-06-04T19:49:02.730254417
+2025-06-04T19:49:02.737Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_EURUSD","bid":1.08454987241599041807,"ask":1.09484551247342669558,"timeStamp":"2025-06-04T19:48:58.481338721"}
+2025-06-04T19:49:02.738Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_EURUSD → BID=1.0845498724159903 ASK=1.0948455124734267
+2025-06-04T19:49:02.740Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_EURUSD] BID=1.0845498724159903 ASK=1.0948455124734267 platform=PF2
+2025-06-04T19:49:02.744Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_GBPUSD","bid":1.267555930229728439243,"ask":1.26900584318635311752,"timeStamp":"2025-06-04T19:48:58.481501929"}
+2025-06-04T19:49:02.745Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_GBPUSD → BID=1.2675559302297283 ASK=1.2690058431863531
+2025-06-04T19:49:02.747Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_GBPUSD] BID=1.2675559302297283 ASK=1.2690058431863531 platform=PF2
+2025-06-04T19:49:07.683Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_USDTRY","bid":38.39646872083126085,"ask":38.40646872083126085,"timeStamp":"2025-06-04T19:49:03.479922209"}
+2025-06-04T19:49:07.684Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_USDTRY → BID=38.39646872083126 ASK=38.40646872083126
+2025-06-04T19:49:07.687Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_USDTRY] BID=38.39646872083126 ASK=38.40646872083126 platform=PF2
+2025-06-04T19:49:07.690Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USD_MID] bid=38.25915936041563 ask=38.25915936041563 @2025-06-04T19:49:07.688336169
+2025-06-04T19:49:07.691Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_GBPUSD|22:number:1.2680|25:number:1.2688|5:timestamp:2025-06-04 19:49:07
+2025-06-04T19:49:07.693Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USDTRY] bid=38.27988436041563 ask=38.23843436041563 @2025-06-04T19:49:07.690907044
+2025-06-04T19:49:07.694Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][GBPUSD] BID=1.2680 ASK=1.2688 platform=PF1
+2025-06-04T19:49:07.694Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_USDTRY|22:number:38.1458|25:number:38.1625|5:timestamp:2025-06-04 19:49:07
+2025-06-04T19:49:07.695Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][GBPTRY] bid=48.504119200953036688199603007446 ask=48.547159090130322749324747990258 @2025-06-04T19:49:07.693867961
+2025-06-04T19:49:07.695Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][USDTRY] BID=38.1458 ASK=38.1625 platform=PF1
+2025-06-04T19:49:07.696Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_EURUSD|22:number:1.0846|25:number:1.0852|5:timestamp:2025-06-04 19:49:07
+2025-06-04T19:49:07.699Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][EURUSD] BID=1.0846 ASK=1.0852 platform=PF1
+2025-06-04T19:49:07.699Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][EURTRY] bid=41.520894316658645798631201044976 ask=41.727511042679754279332089190442 @2025-06-04T19:49:07.696404711
+2025-06-04T19:49:07.705Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_EURUSD","bid":1.08436787564278846761,"ask":1.09519640770957570212,"timeStamp":"2025-06-04T19:49:03.479218709"}
+2025-06-04T19:49:07.706Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_EURUSD → BID=1.0843678756427884 ASK=1.0951964077095757
+2025-06-04T19:49:07.710Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_EURUSD] BID=1.0843678756427884 ASK=1.0951964077095757 platform=PF2
+2025-06-04T19:49:07.727Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_GBPUSD","bid":1.267744273467648313143,"ask":1.26886804339943520789,"timeStamp":"2025-06-04T19:49:03.479714626"}
+2025-06-04T19:49:07.729Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_GBPUSD → BID=1.2677442734676483 ASK=1.2688680433994353
+2025-06-04T19:49:07.735Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_GBPUSD] BID=1.2677442734676483 ASK=1.2688680433994353 platform=PF2
+2025-06-04T19:49:12.564Z  INFO 1 --- [MainProgram] [scheduling-1] com.example.mainprogram.Coordinator      : checkDataTimeouts() çalıştı
+2025-06-04T19:49:12.684Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_USDTRY","bid":38.56612989556003105,"ask":38.70035151775582655,"timeStamp":"2025-06-04T19:49:08.481517045"}
+2025-06-04T19:49:12.686Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_USDTRY → BID=38.56612989556003 ASK=38.70035151775583
+2025-06-04T19:49:12.689Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_USDTRY] BID=38.56612989556003 ASK=38.70035151775583 platform=PF2
+2025-06-04T19:49:12.692Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_GBPUSD|22:number:1.2682|25:number:1.2687|5:timestamp:2025-06-04 19:49:12
+2025-06-04T19:49:12.694Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USD_MID] bid=38.39369535332897 ask=38.39369535332897 @2025-06-04T19:49:12.691162922
+2025-06-04T19:49:12.695Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][GBPUSD] BID=1.2682 ASK=1.2687 platform=PF1
+2025-06-04T19:49:12.695Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_USDTRY|22:number:38.1197|25:number:38.2315|5:timestamp:2025-06-04 19:49:12
+2025-06-04T19:49:12.698Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][USDTRY] BID=38.1197 ASK=38.2315 platform=PF1
+2025-06-04T19:49:12.698Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USDTRY] bid=38.35596494778002 ask=38.43142575887792 @2025-06-04T19:49:12.695638297
+2025-06-04T19:49:12.698Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_EURUSD|22:number:1.0848|25:number:1.0852|5:timestamp:2025-06-04 19:49:12
+2025-06-04T19:49:12.702Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][GBPTRY] bid=48.695734935434501843825268747074 ask=48.726914906943220131410868898872 @2025-06-04T19:49:12.699357505
+2025-06-04T19:49:12.703Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][EURUSD] BID=1.0848 ASK=1.0852 platform=PF1
+2025-06-04T19:49:12.715Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][EURTRY] bid=41.652817456561633471341256649974 ask=41.868430089283498145938202942566 @2025-06-04T19:49:12.709041463
+2025-06-04T19:49:12.720Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_EURUSD","bid":1.08446139996617400446,"ask":1.09474294635807766992,"timeStamp":"2025-06-04T19:49:08.48056542"}
+2025-06-04T19:49:12.723Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_EURUSD → BID=1.084461399966174 ASK=1.0947429463580776
+2025-06-04T19:49:12.727Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_EURUSD] BID=1.084461399966174 ASK=1.0947429463580776 platform=PF2
+2025-06-04T19:49:12.731Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_GBPUSD","bid":1.267558497195685213593,"ask":1.26877238357577303976,"timeStamp":"2025-06-04T19:49:08.481275628"}
+2025-06-04T19:49:12.732Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_GBPUSD → BID=1.2675584971956853 ASK=1.268772383575773
+2025-06-04T19:49:12.734Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_GBPUSD] BID=1.2675584971956853 ASK=1.268772383575773 platform=PF2
+2025-06-04T19:49:17.687Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_USDTRY","bid":38.30217741351042275,"ask":38.676302553986831138,"timeStamp":"2025-06-04T19:49:13.480198047"}
+2025-06-04T19:49:17.691Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_USDTRY → BID=38.30217741351042 ASK=38.67630255398683
+2025-06-04T19:49:17.693Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_GBPUSD|22:number:1.2681|25:number:1.2684|5:timestamp:2025-06-04 19:49:17
+2025-06-04T19:49:17.695Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_USDTRY] BID=38.30217741351042 ASK=38.67630255398683 platform=PF2
+2025-06-04T19:49:17.696Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][GBPUSD] BID=1.2681 ASK=1.2684 platform=PF1
+2025-06-04T19:49:17.696Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_USDTRY|22:number:38.1681|25:number:38.1219|5:timestamp:2025-06-04 19:49:17
+2025-06-04T19:49:17.697Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][USDTRY] BID=38.1681 ASK=38.1219 platform=PF1
+2025-06-04T19:49:17.698Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.TcpDataFetcher   : Gelen mesaj: Updated rate: PF1_EURUSD|22:number:1.0849|25:number:1.0853|5:timestamp:2025-06-04 19:49:17
+2025-06-04T19:49:17.698Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USD_MID] bid=38.33241999187432 ask=38.33241999187432 @2025-06-04T19:49:17.697343966
+2025-06-04T19:49:17.700Z  INFO 1 --- [MainProgram] [tcp-data-fetcher-PF1] com.example.mainprogram.Coordinator      : [RAW][EURUSD] BID=1.0849 ASK=1.0853 platform=PF1
+2025-06-04T19:49:17.701Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][USDTRY] bid=38.23513870675521 ask=38.39910127699342 @2025-06-04T19:49:17.699815299
+2025-06-04T19:49:17.711Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][GBPTRY] bid=48.579565447731391876565482342032 ask=48.60856933077131696143301048752 @2025-06-04T19:49:17.703503132
+2025-06-04T19:49:17.741Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [DERIVED][EURTRY] bid=41.56184053412217427920142962584 ask=41.766483581520845500074548003616 @2025-06-04T19:49:17.738061257
+2025-06-04T19:49:17.750Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_EURUSD","bid":1.08417539282585484933,"ask":1.09457242999920996020,"timeStamp":"2025-06-04T19:49:13.478968547"}
+2025-06-04T19:49:17.755Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_EURUSD → BID=1.0841753928258548 ASK=1.09457242999921
+2025-06-04T19:49:17.763Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_EURUSD] BID=1.0841753928258548 ASK=1.09457242999921 platform=PF2
+2025-06-04T19:49:17.788Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Güncellenen kur verisi alındı: {"rateName":"PF2_GBPUSD","bid":1.267117819647890741763,"ask":1.26909208308669147736,"timeStamp":"2025-06-04T19:49:13.479846422"}
+2025-06-04T19:49:17.793Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] c.example.mainprogram.RestDataFetcher    : Calling onRateUpdate from REST: PF2_GBPUSD → BID=1.2671178196478907 ASK=1.2690920830866914
+2025-06-04T19:49:17.798Z  INFO 1 --- [MainProgram] [rest-data-fetcher-PF2] com.example.mainprogram.Coordinator      : [RAW][PF2_GBPUSD] BID=1.2671178196478907 ASK=1.2690920830866914 platform=PF2
+2025-06-04T19:49:17.925Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Revoke previously assigned partitions log-topic-0
+2025-06-04T19:49:17.925Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Revoke previously assigned partitions rate-topic-0
+2025-06-04T19:49:17.929Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : postgres-group: partitions revoked: [rate-topic-0]
+2025-06-04T19:49:17.929Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opensearch-group: partitions revoked: [log-topic-0]
+2025-06-04T19:49:17.930Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Member consumer-postgres-group-2-006e4bbc-7fb3-463a-9923-d765aa27a96e sending LeaveGroup request to coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false) due to the consumer unsubscribed from all topics
+2025-06-04T19:49:17.931Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Member consumer-opensearch-group-1-b1d4dea2-f40c-4cf5-8041-d5f0390918fe sending LeaveGroup request to coordinator kafka:9092 (id: 2147483646 rack: null isFenced: false) due to the consumer unsubscribed from all topics
+2025-06-04T19:49:17.937Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.937Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.939Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.938Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.942Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Unsubscribed all topics or patterns and assigned partitions
+2025-06-04T19:49:17.941Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Unsubscribed all topics or patterns and assigned partitions
+2025-06-04T19:49:17.948Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.949Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opensearch-group-1, groupId=opensearch-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.948Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.951Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-postgres-group-2, groupId=postgres-group] Request joining group due to: consumer pro-actively leaving the group
+2025-06-04T19:49:17.967Z  INFO 1 --- [MainProgram] [lettuce-eventExecutorLoop-1-1] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was redis/172.18.0.7:6379
+2025-06-04T19:49:17.982Z  WARN 1 --- [MainProgram] [lettuce-eventExecutorLoop-1-1] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [redis/<unresolved>:6379]: Connection refused: redis/172.18.0.7:6379
+2025-06-04T19:49:18.320Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-06-04T19:49:18.321Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-06-04T19:49:18.321Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-06-04T19:49:18.321Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-06-04T19:49:18.328Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-postgres-group-2 unregistered
+2025-06-04T19:49:18.328Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : postgres-group: Consumer stopped
+2025-06-04T19:49:18.426Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-06-04T19:49:18.427Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-06-04T19:49:18.428Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-06-04T19:49:18.428Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-06-04T19:49:18.432Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-opensearch-group-1 unregistered
+2025-06-04T19:49:18.432Z  INFO 1 --- [MainProgram] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opensearch-group: Consumer stopped
+2025-06-04T19:49:18.434Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-04T19:49:18.437Z  INFO 1 --- [MainProgram] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-06-04T19:49:18.452Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=MainProgram-producer-1] Closing the Kafka producer with timeoutMillis = 30000 ms.
+2025-06-04T19:49:18.455Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2025-06-04T19:49:18.455Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-06-04T19:49:18.456Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2025-06-04T19:49:18.456Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2025-06-04T19:49:18.457Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.a.kafka.common.utils.AppInfoParser     : App info kafka.producer for MainProgram-producer-1 unregistered
+2025-06-04T19:49:18.457Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2025-06-04T19:49:18.458Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.i.channel.PublishSubscribeChannel    : Channel 'MainProgram.errorChannel' has 0 subscriber(s).
+2025-06-04T19:49:18.459Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2025-06-04T19:49:18.470Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04T19:49:18.473Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-04T19:49:18.475Z  INFO 1 --- [MainProgram] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

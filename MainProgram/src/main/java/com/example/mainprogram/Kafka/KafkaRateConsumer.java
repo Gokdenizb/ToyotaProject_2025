@@ -1,7 +1,7 @@
 package com.example.mainprogram.Kafka;
 
-import com.example.mainprogram.Rate.Rate;
-import com.example.mainprogram.Rate.RateRepository;
+import com.example.mainprogram.Rate;
+import com.example.mainprogram.RateRepository;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
