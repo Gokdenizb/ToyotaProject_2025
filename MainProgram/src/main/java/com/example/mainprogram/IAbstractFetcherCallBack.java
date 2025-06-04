@@ -1,5 +1,9 @@
 package com.example.mainprogram;
 
+import com.example.mainprogram.Rate.Rate;
+import com.example.mainprogram.Rate.RateFields;
+import com.example.mainprogram.Rate.RateStatus;
+
 public interface IAbstractFetcherCallBack {
     void onConnect(String platformName , Boolean status);
     void onDisConnect(String platformName , Boolean status);

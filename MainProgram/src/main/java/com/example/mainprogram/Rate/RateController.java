@@ -1,4 +1,4 @@
-package com.example.mainprogram;
+package com.example.mainprogram.Rate;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

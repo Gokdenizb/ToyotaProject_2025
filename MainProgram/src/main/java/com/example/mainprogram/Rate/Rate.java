@@ -1,4 +1,4 @@
-package com.example.mainprogram;
+package com.example.mainprogram.Rate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
