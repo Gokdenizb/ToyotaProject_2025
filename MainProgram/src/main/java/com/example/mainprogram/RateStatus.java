@@ -1,4 +1,4 @@
-package com.example.mainprogram.Rate;
+package com.example.mainprogram;
 
 
 public enum RateStatus {

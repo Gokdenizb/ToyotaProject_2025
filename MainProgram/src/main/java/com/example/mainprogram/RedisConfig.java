@@ -1,7 +1,6 @@
 package com.example.mainprogram;
 
 
-import com.example.mainprogram.Rate.Rate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -26,7 +25,6 @@ public class RedisConfig {
         template.setValueSerializer(serializer);
         template.setHashKeySerializer(new StringRedisSerializer());
         template.setHashValueSerializer(serializer);
-        template.setDefaultSerializer(serializer);
 
         template.afterPropertiesSet();
         return template;
