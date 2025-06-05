@@ -274,14 +274,8 @@ public class Coordinator implements IAbstractFetcherCallBack {
 
     private volatile ScheduledFuture<?> retryJob;
 
-    private void scheduleReconnect(IAbstractDataFetcher f, int attempt, long delaySec) {
-        if (retryJob != null && !retryJob.isDone()) return;     // already scheduled
-        retryJob = reconnector.schedule(() -> doReconnect(f, attempt), delaySec, TimeUnit.SECONDS);
-    }
 
-    private void cancelReconnect() {
-        if (retryJob != null) retryJob.cancel(false);
-    }
+
 
     private void doReconnect(IAbstractDataFetcher fetcher, int attempt) {
         try {
@@ -298,12 +292,11 @@ public class Coordinator implements IAbstractFetcherCallBack {
                         String rateName,
                         RateFields f)
     {
-        // If the fetcher did not supply a timestamp, fall back to "now".
         LocalDateTime ts = (f.getTimestamp() != null) ? f.getTimestamp()
                 : LocalDateTime.now();
 
-        return new Rate(platform,               // platformName
-                rateName,               // rateName   (→ becomes symbol after you strip PF?_)
+        return new Rate(platform,
+                rateName,
                 f.getBid(),
                 f.getAsk(),
                 ts);
@@ -336,15 +329,15 @@ public class Coordinator implements IAbstractFetcherCallBack {
                                 Rate rate)
     {
         String symbol = toSymbol(rate.getRateName());
-        /* 1️⃣  In-memory cache (latest quote) */
+
         rawBySource
                 .computeIfAbsent(platform, k -> new ConcurrentHashMap<>())
-                .put(symbol,                    // symbol already stripped?
+                .put(symbol,
                         new RateFields(rate.getBid(),
                                 rate.getAsk(),
                                 rate.getTimestamp()));
 
-        /* 2️⃣  Persist to Redis (current + history stream) */
+
         try {
             redisTemplate.opsForValue().set("RAW:" + rate.getRateName(), rate);
 
@@ -360,10 +353,9 @@ public class Coordinator implements IAbstractFetcherCallBack {
             logger.error("Raw veriyi Redis’e yazarken hata: {}", e.getMessage());
         }
 
-        /* 3️⃣  Heart-beat */
+
         touchLastTimestamp(platform);
 
-        /* 4️⃣  Derived-rate trigger */
         if ("PF2".equals(platform)) {
             processDerivedRates(rateName);
         }
