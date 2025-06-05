@@ -100,7 +100,7 @@ Adjust values to match your environment or override them with **environment vari
 ### 1. Sample REST Call
 
 ```bash
-curl -X POST http://localhost:8080/api/v1/rates \
+curl -X POST http://localhost:8080/api/rates/PF2_USDTRY \
      -H "Content-Type: application/json" \
      -d '{
            "symbol": "EURUSD",
