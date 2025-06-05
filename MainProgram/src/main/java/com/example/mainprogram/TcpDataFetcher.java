@@ -116,7 +116,7 @@ public class TcpDataFetcher implements IAbstractDataFetcher {
     /* === Özel yardımcılar === */
 
     /**
-     * ana döngü: bağlantı kur, dinle, hata alırsan geri dön → yeniden dene.
+     * ana döngü: bağlantı kur, dinle, hata alırsan geri dön→ yeniden dene.
      */
     private void reconnectLoop() {
         while (running) {
@@ -124,9 +124,9 @@ public class TcpDataFetcher implements IAbstractDataFetcher {
                 openSocket();
                 notifyConnectedOnce();
                 resubscribeAll();
-                listenForRates();                 // blok; hata aldığında fall‑through
+                listenForRates();
             } catch (IOException io) {
-                logger.warn("{} için bağlantı koptu: {}", platformName, io.getMessage());
+                logger.warn("{}için bağlantı koptu: {}", platformName, io.getMessage());
             } finally {
                 closeQuietly(socket);
                 notifyDisconnectedOnce(false);
@@ -180,7 +180,7 @@ public class TcpDataFetcher implements IAbstractDataFetcher {
                 callBack.onRateUpdate(platformName, rateName, new RateFields(bid, ask, ts));
             }
         }
-        // null döndüyse veya running=false olduysa IOException fırlatma → reconnect
+        // null döndüyse veya running=false olduysa IOException fırlatma → reconnect
         throw new IOException("Sunucu akışı kapandı");
     }
 

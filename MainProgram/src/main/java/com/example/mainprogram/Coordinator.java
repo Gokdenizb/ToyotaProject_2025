@@ -85,31 +85,6 @@ public class Coordinator implements IAbstractFetcherCallBack {
     }
 
 
-    /** Ham veriyi bellekte tutar ve Redis’e yazar. */
-    private void storeRawRate(String platform, String rateName, RateFields f) {
-        String symbol = toSymbol(rateName);
-
-        rawBySource
-                .computeIfAbsent(platform, k -> new ConcurrentHashMap<>())
-                .put(symbol, f);
-
-        try {
-            Rate raw = new Rate(platform, symbol, f.getBid(), f.getAsk(), LocalDateTime.now());
-
-            redisTemplate.opsForValue().set("RAW:" + symbol, raw);
-
-            ObjectRecord<String, Rate> rec = StreamRecords.newRecord()
-                    .in("STREAM:RAW:" + symbol)
-                    .ofObject(raw);
-            redisTemplate.opsForStream().add(rec);
-
-            logger.info("[RAW][{}] BID={} ASK={} platform={}", symbol, f.getBid(), f.getAsk(), platform);
-        } catch (Exception e) {
-            logger.error("Raw veriyi Redis’e yazarken hata: {}", e.getMessage());
-        }
-    }
-
-
     /** Son veri alma zamanını günceller. */
     private void touchLastTimestamp(String platform) {
         lastDataTimestamps.put(platform, LocalDateTime.now());
@@ -249,7 +224,6 @@ public class Coordinator implements IAbstractFetcherCallBack {
             }
         }
     }
-
 
 
     @Autowired
