@@ -103,7 +103,7 @@ Adjust values to match your environment or override them with **environment vari
 curl -X POST http://localhost:8080/api/rates/PF2_USDTRY \
      -H "Content-Type: application/json" \
      -d '{
-           "symbol": "EURUSD",
+           "symbol": "USDTRY",
            "bid": 1.0864,
            "ask": 1.0866,
            "timestamp": "2025-06-04T12:30:00Z"
